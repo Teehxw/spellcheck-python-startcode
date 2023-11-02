@@ -4,8 +4,6 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-
-
 def main():
     # Load data files into lists
     dictionary = loadWordsFromFile("data-files/dictionary.txt")
@@ -30,3 +28,63 @@ def loadWordsFromFile(fileName):
 
 # Call main() to begin program
 main()
+
+#Functions
+
+def LinearSearch(array, item):
+    for i in range(len(array)):
+       if array[i] == item:
+          return i 
+    
+    return -1
+
+# Main Program Loop
+loop = True
+while loop:
+  # Main Menu
+  print("\n***MAIN MENU*** ")
+  print("1. Spell Check a Word(Linear Search)")
+  print("2. Spell check a Word(Binary Search)")
+  print("3. Spell Check in Alice In Wonderland(Linear Search)")
+  print("4. Spell Check in Alice in Wonerland(Binary Search)")
+  print("5. Exit")
+  
+
+  # Get Menu Selection from User
+  option = input("Enter Selection (1-6): \n")
+
+  # Take Action Based on Menu Selection
+  # Option 1
+
+  if option == "1":
+    #PRINT LIST
+    print("Spell Check a Word(Linear Search)")
+    dictionary = loadWordsFromFile("data-files/dictionary.txt")
+    word = input("Please Enter a Word: ")
+    
+    print(f"{word} is IN the Dictionary at postition {LinearSearch(dictionary,word)}")
+
+
+  # Option 2
+  elif option == "2":
+    #ADD ITEM TO END
+    print("Spell check a Word(Binary Search)")
+
+
+  # Option 3
+  elif option == "3":
+    # REMOVE LAST ITEM
+    print(" Spell Check in Alice In Wonderland(Linear Search)")
+ 
+
+  # Option 4
+  elif option == "4":
+    #INSERT AT POSITION
+    print("Spell Check in Alice in Wonerland(Binary Search)")
+   
+
+  # Option 5
+  elif option == "8":
+    print("EXIT")
+    loop = False
+
