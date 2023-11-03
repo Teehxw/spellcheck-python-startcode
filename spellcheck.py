@@ -52,6 +52,7 @@ def BinarySearch(array,item):
 
   return -1
 
+import time
 # Main Program Loop
 loop = True
 while loop:
@@ -75,10 +76,13 @@ while loop:
     print("Spell Check a Word(Linear Search)")
     dictionary = loadWordsFromFile("data-files/dictionary.txt")
     word = input("Please Enter a Word: ")
-    if LinearSearch(dictionary,word)== -1:
-      print(f"{word} is NOT in Dictionary")
+    startTime = time.time()
+    index = LinearSearch(dictionary,word)
+    endTime = time.time()
+    if index == -1:
+      print(f"{word} is NOT in Dictionary.({endTime - startTime}) seconds")
     else:
-      print(f"{word} is IN the Dictionary at postition {LinearSearch(dictionary,word)}")
+      print(f"{word} is IN the Dictionary at postition {LinearSearch(dictionary,word)}. ({endTime - startTime}) seconds")
 
 
   # Option 2
@@ -103,11 +107,14 @@ while loop:
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
     dictionary = loadWordsFromFile("data-files/dictionary.txt") 
     countWord = 0
-    for i in aliceWords:
-      if LinearSearch(dictionary,i.lower())== -1:
-        countWord = countWord + 1
 
-    print(f"Number of words not found in dictionary: {countWord}")
+    startTime = time.time()  
+    for word in aliceWords:
+      index = LinearSearch(dictionary,word.lower())
+      if index == -1:
+        countWord = countWord + 1
+    endTime = time.time()
+    print(f"Number of words not found in dictionary: {countWord}. ({endTime - startTime}) seconds ")
 
 
   # Option 4
@@ -117,20 +124,16 @@ while loop:
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
     dictionary = loadWordsFromFile("data-files/dictionary.txt")
     countWord = 0
-    for i in aliceWords:
-      if BinarySearch(dictionary,i.lower())== -1:
+    startTime = time.time()
+    for word in aliceWords:
+      index = BinarySearch(dictionary,word.lower())
+      if index == -1:
         countWord = countWord + 1
+    endTime = time.time()
 
-    print(f"Number of words not found in dictionary: {countWord}")
+    print(f"Number of words not found in dictionary: {countWord}. ({endTime - startTime}) seconds")
 
   # Option 5
   elif option == "8":
     print("EXIT")
     loop = False
-
-# EXAMPLE OF HOW TO TIME DURATION OF A SORT ALGORITHM
-#startTime = time.time()
-#insertionSort(randomData)
-
-#endTime = time.time()
-#print(f"Insertion Sort Random Data: {endTime - startTime} seconds")
