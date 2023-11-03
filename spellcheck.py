@@ -87,13 +87,13 @@ while loop:
     print("Spell check a Word(Binary Search)")
     dictionary = loadWordsFromFile("data-files/dictionary.txt")
     word = input("Please Enter a Word: ")
-    
+    startTime = time.time()
     index = BinarySearch(dictionary, word)
-    
+    endTime = time.time()
     if index == -1:
-      print(f"{word} is NOT in Dictionary")
+      print(f"{word} is NOT in Dictionary. ({endTime - startTime}) seconds")
     else:
-      print(f"{word} is IN the Dictionary at postition {BinarySearch(dictionary,word)}")
+      print(f"{word} is IN the Dictionary at postition {BinarySearch(dictionary,word)}. ({endTime - startTime}) seconds")
 
 
   # Option 3
@@ -101,11 +101,13 @@ while loop:
     # REMOVE LAST ITEM
     print(" Spell Check in Alice In Wonderland(Linear Search)")
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
-    word = input("Please Enter a Word: ")
-    if LinearSearch(aliceWords,word)== -1:
-      print(f"{word} is NOT in Dictionary")
-    else:
-      print(f"{word} is IN the Dictionary at postition {LinearSearch(aliceWords,word)}")
+    dictionary = loadWordsFromFile("data-files/dictionary.txt") 
+    countWord = 0
+    for i in aliceWords:
+      if LinearSearch(dictionary,i.lower())== -1:
+        countWord = countWord + 1
+
+    print(f"Number of words not found in dictionary: {countWord}")
 
 
   # Option 4
@@ -113,11 +115,13 @@ while loop:
     #INSERT AT POSITION
     print("Spell Check in Alice in Wonerland(Binary Search)")
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
-    word = input("Please Enter a Word: ")
-    if BinarySearch(aliceWords,word)== -1:
-      print(f"{word} is NOT in Dictionary")
-    else:
-      print(f"{word} is IN the Dictionary at postition {BinarySearch(aliceWords,word)}")
+    dictionary = loadWordsFromFile("data-files/dictionary.txt")
+    countWord = 0
+    for i in aliceWords:
+      if BinarySearch(dictionary,i.lower())== -1:
+        countWord = countWord + 1
+
+    print(f"Number of words not found in dictionary: {countWord}")
 
   # Option 5
   elif option == "8":
